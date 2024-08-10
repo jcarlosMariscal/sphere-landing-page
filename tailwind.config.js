@@ -4,6 +4,9 @@ export default {
   theme: {
     extend: {
       spacing: {},
+      screens: {
+        xs: "500px",
+      },
     },
   },
   plugins: [],

@@ -80,7 +80,7 @@ button:focus-visible {
     @apply text-gray-500 text-sm 2xl:text-base font-medium hover:text-indigo-800;
   }
   .btn {
-    @apply px-8 py-3 text-sm font-medium rounded-full flex justify-center items-center gap-1;
+    @apply text-sm font-medium rounded-full flex justify-center items-center gap-1;
   }
   .btn-black {
     @apply bg-black text-white;
@@ -88,5 +88,154 @@ button:focus-visible {
   .btn-outline {
     @apply bg-transparent border border-black text-black;
   }
+  .before-border {
+    @apply relative before:hidden lg:before:block before:content-[''] before:absolute before:-left-[3px] before:top-0 before:bottom-0 before:w-[3px] before:rounded-md;
+  }
 }
 @tailwind utilities;
+
+.smartphone:hover .smartphone-img {
+  animation: smartphone-anim 2s ease-in infinite alternate;
+}
+@keyframes smartphone-anim {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.smartphone:hover .smartphone-highest {
+  animation: smartphone-highest 4s 0.1s ease-in infinite;
+}
+
+@keyframes smartphone-highest {
+  0% {
+    transform: rotate(0);
+  }
+  1% {
+    transform: rotate(7.5deg); /* Reducido de 15deg a 7.5deg */
+  }
+  3% {
+    transform: rotate(-7deg); /* Reducido de -14deg a -7deg */
+  }
+  5% {
+    transform: rotate(8.5deg); /* Reducido de 17deg a 8.5deg */
+  }
+  7% {
+    transform: rotate(-8deg); /* Reducido de -16deg a -8deg */
+  }
+  9% {
+    transform: rotate(7.5deg); /* Reducido de 15deg a 7.5deg */
+  }
+  11% {
+    transform: rotate(-7deg); /* Reducido de -14deg a -7deg */
+  }
+  13% {
+    transform: rotate(6.5deg); /* Reducido de 13deg a 6.5deg */
+  }
+  15% {
+    transform: rotate(-6deg); /* Reducido de -12deg a -6deg */
+  }
+  17% {
+    transform: rotate(5.5deg); /* Reducido de 11deg a 5.5deg */
+  }
+  19% {
+    transform: rotate(-5deg); /* Reducido de -10deg a -5deg */
+  }
+  21% {
+    transform: rotate(4.5deg); /* Reducido de 9deg a 4.5deg */
+  }
+  23% {
+    transform: rotate(-4deg); /* Reducido de -8deg a -4deg */
+  }
+  25% {
+    transform: rotate(3.5deg); /* Reducido de 7deg a 3.5deg */
+  }
+  27% {
+    transform: rotate(-3deg); /* Reducido de -6deg a -3deg */
+  }
+  29% {
+    transform: rotate(2.5deg); /* Reducido de 5deg a 2.5deg */
+  }
+  31% {
+    transform: rotate(-2deg); /* Reducido de -4deg a -2deg */
+  }
+  33% {
+    transform: rotate(1.5deg); /* Reducido de 3deg a 1.5deg */
+  }
+  35% {
+    transform: rotate(-1deg); /* Reducido de -2deg a -1deg */
+  }
+  37% {
+    transform: rotate(0.5deg); /* Reducido de 1deg a 0.5deg */
+  }
+  39% {
+    transform: rotate(-0.25deg); /* Reducido de -0.5deg a -0.25deg */
+  }
+  41% {
+    transform: rotate(0.25deg); /* Reducido de 0.5deg a 0.25deg */
+  }
+  43% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+.percent {
+  animation: percent-anim 1s ease-in infinite alternate;
+}
+
+@keyframes percent-anim {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(2deg); /* Inicio del movimiento */
+  }
+  40% {
+    transform: rotate(-2deg); /* Primer cambio de dirección */
+  }
+  60% {
+    transform: rotate(2deg); /* Movimiento hacia el otro lado */
+  }
+  80% {
+    transform: rotate(-2deg); /* Cambio de dirección */
+  }
+  100% {
+    transform: rotate(0); /* Vuelve al valor inicial */
+  }
+}
+.shadow-custom2 {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 3.5px 14.5px 0px;
+}
+.shadow-custom {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.shadow-custom:hover {
+  box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 29px 0px;
+  animation: shadow-anim 2s ease-in infinite alternate;
+}
+
+@keyframes shadow-anim {
+  0% {
+    box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 50px 0px;
+  }
+  25% {
+    box-shadow: rgba(55, 48, 163, 0.4) 0px 7px 75px 0px;
+  }
+  50% {
+    box-shadow: rgba(55, 48, 163, 0.6) 0px 7px 50px 0px;
+  }
+  75% {
+    box-shadow: rgba(55, 48, 163, 0.4) 0px 7px 29px 0px;
+  }
+  100% {
+    box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 29px 0px;
+  }
+}

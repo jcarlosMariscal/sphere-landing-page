@@ -6,7 +6,7 @@ export const UserActions = () => {
       <a href="#" className="nav-link">
         LOGIN
       </a>
-      <a href="#" className="btn btn-black">
+      <a href="#" className="btn btn-black px-8 py-3">
         Sign Up Now
         <BiRightArrowAlt size={24} />
       </a>

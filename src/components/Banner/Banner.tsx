@@ -1,11 +1,11 @@
 export const Banner = () => {
   return (
-    <div className="bg-gray-50 px-4 md:px-16 lg:px-30 xl:px-40 py-4 pb-16 sm:py-12 relative">
+    <div className="bg-gray-100 px-4 md:px-16 lg:px-30 xl:px-40 py-4 pb-16 sm:py-12 relative">
       <div className="w-full lg:w-10/12 xl:w-8/12">
         <h1 className="text-xl sm:text-5xl md:text-6xl 2xl:text-8xl font-black leading-8 sm:leading-[4rem] md:eading-[5.5rem]">
           <span className="inline sm:block">
             Grab
-            <span className="bg-indigo-800 text-white mx-2 px-4 py-2 sm:py-4 sm:px-6 rounded-3xl inline-block -rotate-3 shadow-lg shadow-gray-700/50">
+            <span className="bg-indigo-800 text-white mx-2 px-4 py-2 sm:py-4 sm:px-6 rounded-3xl inline-block -rotate-3 shadow-lg shadow-gray-700/50 percent">
               50%
             </span>
           </span>
@@ -27,16 +27,16 @@ export const Banner = () => {
         </div>
       </div>
       <div className="absolute right-1 lg:right-4 xl:right-16 bottom-0">
-        <div className="relative">
+        <div className="relative smartphone">
           <img
             src="./assets/smartphone.png"
             alt="Smartphone"
-            className="w-40 md:w-80 lg:w-[28rem] xl:w-[32rem] 2xl:w-[37rem]"
+            className="w-40 md:w-80 lg:w-[28rem] xl:w-[32rem] 2xl:w-[37rem] smartphone-img"
           />
           <img
             src="./assets/highest-quality.png"
             alt="Highest Quality"
-            className="absolute size-12 md:size-20 lg:size-24 xl:size-28 -left-4 bottom-10 xl:bottom-20 "
+            className="absolute size-12 md:size-20 lg:size-24 xl:size-28 -left-4 bottom-10 xl:bottom-20 smartphone-highest"
           />
         </div>
       </div>
