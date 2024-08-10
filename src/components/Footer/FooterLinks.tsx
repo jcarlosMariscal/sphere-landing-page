@@ -1,8 +1,6 @@
 import { FC } from "react";
-type Link = {
-  url: string;
-  name: string;
-};
+import { Link } from "../../assets/data/links";
+
 type Props = {
   section: string;
   links: Link[];
@@ -13,7 +11,7 @@ export const FooterLinks: FC<Props> = ({ section, links }) => {
       <span className="font-bold mb-2 block">{section}</span>
       <div className="flex flex-col gap-2">
         {links.map((link, index) => (
-          <a key={index} href={link.url}>
+          <a key={index} href={link.to} className="flex gap-2">
             {link.name}
           </a>
         ))}
