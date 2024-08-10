@@ -17,61 +17,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
-/*
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
 
 @tailwind base;
 @tailwind components;
@@ -86,13 +31,100 @@ button:focus-visible {
     @apply bg-black text-white;
   }
   .btn-outline {
-    @apply bg-transparent border border-black text-black;
+    @apply bg-white border border-black text-black;
   }
   .before-border {
     @apply relative before:hidden lg:before:block before:content-[''] before:absolute before:-left-[3px] before:top-0 before:bottom-0 before:w-[3px] before:rounded-md;
   }
 }
 @tailwind utilities;
+
+.btn-favorite {
+  position: relative;
+}
+.btn-favorite:hover .svg-heart {
+  /* fill: white; */
+  transform: scale(1.1);
+  transition: all 0.1s ease-in;
+}
+.btn-favorite:active .svg-heart {
+  /* stroke: red; */
+  fill: white;
+  animation: animateHeart 10s infinite;
+}
+.btn-favorite:before {
+  position: absolute;
+  content: "";
+  bottom: 1rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  /* background: white; */
+  border-radius: 50%;
+}
+.btn-favorite:active:before {
+  background: white;
+  animation: animatePoint 3s ease-in;
+}
+
+.btn-cart {
+  position: relative;
+}
+.btn-cart:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  height: 100%;
+  width: 2rem;
+  background: white;
+  z-index: 40;
+  /* overflow: hidden;
+
+  z-index: 50; */
+}
+.btn-cart .cart-icon {
+  background: white;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.btn-cart.animation span {
+  animation: throwAway 1s ease-in-out both;
+}
+.btn-cart.animation .cart-icon {
+  /* background: orange; */
+  animation: move 2.5s 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-1.25rem);
+  }
+  25% {
+    transform: translateX(-1.25rem) rotate(-2deg);
+  }
+  30% {
+    transform: translateX(-1.25rem) rotate(2deg);
+  }
+  35% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: translateX(10rem); /* Asegúrate que sea exactamente 8rem */
+  }
+}
+
+@keyframes throwAway {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    /* opacity: 1; */
+  }
+  100% {
+    transform: translatex(-8rem);
+    /* opacity: 0.7; */
+  }
+}
 
 .smartphone:hover .smartphone-img {
   animation: smartphone-anim 2s ease-in infinite alternate;
@@ -237,5 +269,34 @@ button:focus-visible {
   }
   100% {
     box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 29px 0px;
+  }
+}
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(0.8);
+  }
+  10% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes animatePoint {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(80rem);
   }
 }

@@ -1,4 +1,14 @@
-export const data = [
+type TData = {
+  name: string;
+  svg: string;
+  all: number;
+  arrival: boolean;
+  color: "gray" | "lime" | "indigo" | "slate" | "yellow" | "purple" | "red";
+};
+export type TColorTailwind = {
+  [param: string]: string;
+};
+export const data: TData[] = [
   {
     name: "Computer & Laptop",
     svg: "computer&laptop.svg",
@@ -50,9 +60,6 @@ export const data = [
   },
 ];
 
-type TColorTailwind = {
-  [param: string]: string;
-};
 export const colorTailwind: TColorTailwind = {
   gray: "bg-gray-800 text-white",
   lime: "bg-lime-400 text-dark",

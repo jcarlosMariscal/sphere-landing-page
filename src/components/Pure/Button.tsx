@@ -26,9 +26,9 @@ export const Button: FC<Props> = ({
     <button
       type={type}
       id={id}
-      className={`btn btn-black ${outline ? "btn-outline" : ""} ${
-        square ? "size-12" : "px-8 py-3"
-      } ${className}`}
+      className={`btn btn-black overflow-hidden 
+        ${outline ? "btn-outline" : ""} 
+        ${square ? "size-12" : "px-8 py-3"} ${className}`}
       onClick={onClick}
     >
       {children}

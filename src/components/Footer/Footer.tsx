@@ -1,7 +1,10 @@
 import { SphereLogo } from "../Pure/SphereLogo";
-import { BiSolidPhone } from "react-icons/bi";
-import { IoMdMail } from "react-icons/io";
 import { FooterLinks } from "./FooterLinks";
+import {
+  footerCompany,
+  footerContact,
+  footerInformation,
+} from "../../assets/data/links";
 
 export const Footer = () => {
   return (
@@ -16,33 +19,9 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row  justify-between md:justify-normal gap-6 lg:gap-20">
-        <FooterLinks
-          section="Company"
-          links={[
-            { name: "About Us", url: "#" },
-            { name: "Products Digital", url: "#" },
-            { name: "Customer Reviews", url: "#" },
-          ]}
-        />
-        <FooterLinks
-          section="Information"
-          links={[
-            { name: "Help Center", url: "#" },
-            { name: "Payment Methods", url: "#" },
-            { name: "Return & Refund", url: "#" },
-          ]}
-        />
-        <div>
-          <span className="font-bold mb-2 block">Contact</span>
-          <div className="flex flex-col gap-4">
-            <a href="" className="flex gap-2">
-              <BiSolidPhone size={24} /> (+1) 123-456-7890
-            </a>
-            <a href="" className="flex gap-2">
-              <IoMdMail size={24} /> email@youreemail.com
-            </a>
-          </div>
-        </div>
+        <FooterLinks section="Company" links={footerCompany} />
+        <FooterLinks section="Information" links={footerInformation} />
+        <FooterLinks section="Contact" links={footerContact} />
       </div>
     </div>
   );
