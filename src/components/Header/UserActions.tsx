@@ -2,7 +2,7 @@ import { BiRightArrowAlt } from "react-icons/bi";
 
 export const UserActions = () => {
   return (
-    <div className="hidden lg:flex items-center gap-8">
+    <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-8">
       <a href="#" className="nav-link">
         LOGIN
       </a>
