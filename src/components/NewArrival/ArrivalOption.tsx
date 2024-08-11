@@ -5,16 +5,25 @@ type Props = {
   all: number;
   name: string;
   color: string;
+  active: boolean;
+  onClick: () => void;
 };
 
-export const ArrivalOption: FC<Props> = ({ all, name, color }) => {
-  const active =
-    all === 10
-      ? "bg-indigo-50 rounded-xl lg:rounded-none lg:bg-transparent before-border before:bg-indigo-800 "
-      : "";
+export const ArrivalOption: FC<Props> = ({
+  all,
+  name,
+  color,
+  active,
+  onClick,
+}) => {
+  const cssClass = active
+    ? "bg-indigo-50 rounded-xl lg:rounded-none lg:bg-transparent before-border before:bg-indigo-800 "
+    : "";
   return (
-    <div
-      className={`lg:pl-4 py-1 px-2 lg:px-0 my-0 lg:my-3 flex flex-col lg:flex-row gap-1 lg:gap-4 items-center ${active}`}
+    <button
+      type="button"
+      onClick={onClick}
+      className={`lg:pl-4 py-1 px-2 lg:px-0 my-0 lg:my-3 flex flex-col lg:flex-row gap-1 lg:gap-4 items-center ${cssClass}`}
     >
       <span>
         {name} {name === "Camera" ? "Imaging" : ""}
@@ -24,6 +33,6 @@ export const ArrivalOption: FC<Props> = ({ all, name, color }) => {
       >
         {all}
       </span>
-    </div>
+    </button>
   );
 };

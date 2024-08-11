@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "./assets/css/keyframes.css";
 import "./index.css";
 import { Header } from "./components/Header/Header";
 import { HomePage } from "./pages/HomePage";

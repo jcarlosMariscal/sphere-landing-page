@@ -1,9 +1,11 @@
 import { BiSolidCartAlt } from "react-icons/bi";
 import { Button } from "../Pure/Button";
 import { useEffect, useState } from "react";
+import { TContent } from "../../assets/data/data";
 
-export const SlideCard = () => {
+export const SlideCard = ({ name, stars, price }: TContent) => {
   const [cart, setCart] = useState<boolean>(false);
+  const [favorite, setIsFavorite] = useState<boolean>(false);
   const addCart = () => setCart(true);
 
   useEffect(() => {
@@ -13,12 +15,23 @@ export const SlideCard = () => {
       }, 3500);
     }
   }, [cart]);
+  useEffect(() => {
+    if (favorite) {
+      setTimeout(() => {
+        setIsFavorite(false);
+      }, 1000);
+    }
+  }, [favorite]);
 
   return (
     <div className="p-4">
       <div className="w-full h-[20rem] xs:w-[20rem] xs:h-[20rem] 2xl:w-[27rem] 2xl:h-[27rem] shadow-custom2 rounded-lg p-6 flex flex-col">
         <div className="flex justify-end">
-          <Button square className="btn-favorite">
+          <Button
+            square
+            className={`relative btn-favorite ${favorite ? "active" : ""}`}
+            handleClick={() => setIsFavorite(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -37,8 +50,8 @@ export const SlideCard = () => {
       </div>
       <div className="my-6">
         <div className="flex justify-between font-bold text-lg">
-          <span>Xiphone 14 Pro Maxe</span>
-          <span>$175.00</span>
+          <span>{name}</span>
+          <span>{price}</span>
         </div>
         <div className="my-2">
           <p>Lorem ipsum dolor sit amet.</p>
@@ -52,7 +65,7 @@ export const SlideCard = () => {
             <img src="./assets/svg/star.svg" alt="Star" />
             <img src="./assets/svg/star.svg" alt="Star" />
           </div>
-          <span>(121)</span>
+          <span>({stars})</span>
         </div>
         <Button
           outline
