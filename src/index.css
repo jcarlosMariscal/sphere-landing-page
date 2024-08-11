@@ -2,27 +2,14 @@
 :root {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  /* font-weight: <weight>; */
   font-style: normal;
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400; */
-
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
 @tailwind base;
 @tailwind components;
 @layer components {
   .nav-link {
-    @apply text-gray-500 text-sm 2xl:text-base font-medium hover:text-indigo-800;
+    @apply text-gray-500 text-sm 2xl:text-base font-medium hover:text-indigo-800 py-2 lg:py-0;
   }
   .btn {
     @apply text-sm font-medium rounded-full flex justify-center items-center gap-1;
@@ -38,19 +25,29 @@
   }
 }
 @tailwind utilities;
+.no-scroll {
+  overflow: hidden;
+}
+.percent {
+  animation: percent-animation 1s ease-in infinite alternate;
+}
+.smartphone:hover .smartphone-img {
+  animation: smartphone-anim 2s ease-in infinite alternate;
+}
+.smartphone:hover .smartphone-highest {
+  animation: smartphone-highest 4s 0.1s ease-in infinite;
+}
 
-.btn-favorite {
-  position: relative;
+.btn:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
 }
 .btn-favorite:hover .svg-heart {
-  /* fill: white; */
   transform: scale(1.1);
   transition: all 0.1s ease-in;
 }
-.btn-favorite:active .svg-heart {
-  /* stroke: red; */
+.btn-favorite.active .svg-heart {
   fill: white;
-  animation: animateHeart 10s infinite;
+  animation: heart-animation 1s infinite;
 }
 .btn-favorite:before {
   position: absolute;
@@ -58,190 +55,38 @@
   bottom: 1rem;
   width: 0.25rem;
   height: 0.25rem;
-  /* background: white; */
   border-radius: 50%;
 }
-.btn-favorite:active:before {
+.btn-favorite.active:before {
   background: white;
-  animation: animatePoint 3s ease-in;
+  animation: heart-favorite-animation 3s ease-in;
 }
-
 .btn-cart {
   position: relative;
 }
 .btn-cart:before {
   position: absolute;
   content: "";
-  left: 0;
-  height: 100%;
-  width: 2rem;
-  background: white;
-  z-index: 40;
-  /* overflow: hidden;
-
-  z-index: 50; */
+  left: 2.5rem;
+  top: -0.5rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  background: #000;
 }
-.btn-cart .cart-icon {
-  background: white;
-  overflow: hidden;
-  z-index: 50;
+.btn-cart:hover .cart-icon {
+  animation: cart-animation-hover 1s ease-in infinite;
 }
-
+.btn-cart.animation:before {
+  animation: cart-article-animation 0.5s ease-in-out both;
+}
 .btn-cart.animation span {
-  animation: throwAway 1s ease-in-out both;
+  animation: cart-hidden-text 1s ease-in-out both;
 }
 .btn-cart.animation .cart-icon {
-  /* background: orange; */
-  animation: move 2.5s 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-}
-@keyframes move {
-  0% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(-1.25rem);
-  }
-  25% {
-    transform: translateX(-1.25rem) rotate(-2deg);
-  }
-  30% {
-    transform: translateX(-1.25rem) rotate(2deg);
-  }
-  35% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: translateX(10rem); /* Asegúrate que sea exactamente 8rem */
-  }
+  animation: cart-move-animation 2.5s 1s cubic-bezier(0.25, 0.1, 0.25, 1)
+    forwards;
 }
 
-@keyframes throwAway {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-    /* opacity: 1; */
-  }
-  100% {
-    transform: translatex(-8rem);
-    /* opacity: 0.7; */
-  }
-}
-
-.smartphone:hover .smartphone-img {
-  animation: smartphone-anim 2s ease-in infinite alternate;
-}
-@keyframes smartphone-anim {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.smartphone:hover .smartphone-highest {
-  animation: smartphone-highest 4s 0.1s ease-in infinite;
-}
-
-@keyframes smartphone-highest {
-  0% {
-    transform: rotate(0);
-  }
-  1% {
-    transform: rotate(7.5deg); /* Reducido de 15deg a 7.5deg */
-  }
-  3% {
-    transform: rotate(-7deg); /* Reducido de -14deg a -7deg */
-  }
-  5% {
-    transform: rotate(8.5deg); /* Reducido de 17deg a 8.5deg */
-  }
-  7% {
-    transform: rotate(-8deg); /* Reducido de -16deg a -8deg */
-  }
-  9% {
-    transform: rotate(7.5deg); /* Reducido de 15deg a 7.5deg */
-  }
-  11% {
-    transform: rotate(-7deg); /* Reducido de -14deg a -7deg */
-  }
-  13% {
-    transform: rotate(6.5deg); /* Reducido de 13deg a 6.5deg */
-  }
-  15% {
-    transform: rotate(-6deg); /* Reducido de -12deg a -6deg */
-  }
-  17% {
-    transform: rotate(5.5deg); /* Reducido de 11deg a 5.5deg */
-  }
-  19% {
-    transform: rotate(-5deg); /* Reducido de -10deg a -5deg */
-  }
-  21% {
-    transform: rotate(4.5deg); /* Reducido de 9deg a 4.5deg */
-  }
-  23% {
-    transform: rotate(-4deg); /* Reducido de -8deg a -4deg */
-  }
-  25% {
-    transform: rotate(3.5deg); /* Reducido de 7deg a 3.5deg */
-  }
-  27% {
-    transform: rotate(-3deg); /* Reducido de -6deg a -3deg */
-  }
-  29% {
-    transform: rotate(2.5deg); /* Reducido de 5deg a 2.5deg */
-  }
-  31% {
-    transform: rotate(-2deg); /* Reducido de -4deg a -2deg */
-  }
-  33% {
-    transform: rotate(1.5deg); /* Reducido de 3deg a 1.5deg */
-  }
-  35% {
-    transform: rotate(-1deg); /* Reducido de -2deg a -1deg */
-  }
-  37% {
-    transform: rotate(0.5deg); /* Reducido de 1deg a 0.5deg */
-  }
-  39% {
-    transform: rotate(-0.25deg); /* Reducido de -0.5deg a -0.25deg */
-  }
-  41% {
-    transform: rotate(0.25deg); /* Reducido de 0.5deg a 0.25deg */
-  }
-  43% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(0);
-  }
-}
-.percent {
-  animation: percent-anim 1s ease-in infinite alternate;
-}
-
-@keyframes percent-anim {
-  0% {
-    transform: rotate(0);
-  }
-  20% {
-    transform: rotate(2deg); /* Inicio del movimiento */
-  }
-  40% {
-    transform: rotate(-2deg); /* Primer cambio de dirección */
-  }
-  60% {
-    transform: rotate(2deg); /* Movimiento hacia el otro lado */
-  }
-  80% {
-    transform: rotate(-2deg); /* Cambio de dirección */
-  }
-  100% {
-    transform: rotate(0); /* Vuelve al valor inicial */
-  }
-}
 .shadow-custom2 {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 3.5px 14.5px 0px;
 }
@@ -251,52 +96,5 @@
 
 .shadow-custom:hover {
   box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 29px 0px;
-  animation: shadow-anim 2s ease-in infinite alternate;
-}
-
-@keyframes shadow-anim {
-  0% {
-    box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 50px 0px;
-  }
-  25% {
-    box-shadow: rgba(55, 48, 163, 0.4) 0px 7px 75px 0px;
-  }
-  50% {
-    box-shadow: rgba(55, 48, 163, 0.6) 0px 7px 50px 0px;
-  }
-  75% {
-    box-shadow: rgba(55, 48, 163, 0.4) 0px 7px 29px 0px;
-  }
-  100% {
-    box-shadow: rgba(55, 48, 163, 0.2) 0px 7px 29px 0px;
-  }
-}
-
-@keyframes animateHeart {
-  0% {
-    transform: scale(1);
-  }
-  5% {
-    transform: scale(0.8);
-  }
-  10% {
-    transform: scale(1);
-  }
-  15% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes animatePoint {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(80rem);
-  }
+  animation: shadow-animation 2s ease-in infinite alternate;
 }

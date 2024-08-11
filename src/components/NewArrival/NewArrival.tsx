@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { useRef, useState } from "react";
@@ -6,14 +6,16 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { SlideCard } from "./SlideCard";
 import { Button } from "../Pure/Button";
 import { ArrivalOptions } from "./ArrivalOptions";
+import { data } from "../../assets/data/data";
 
 type TSwiper = {
   activeIndex: number;
 };
 
 export const NewArrival = () => {
-  const swiperRef = useRef<any>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
+  const swiperRef = useRef<SwiperClass | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const handleSlideChange = (swiper: TSwiper) => {
     setCurrentIndex(swiper.activeIndex);
   };
@@ -23,6 +25,8 @@ export const NewArrival = () => {
       ? "pointer-events-none !opacity-50 border border-gray-800"
       : "bg-lime-400 text-dark border-none";
   };
+
+  const changeIndex = (idx: number) => setActiveTabIndex(idx);
 
   return (
     <div className="px-2 sm:px-8 xl:px-20">
@@ -34,7 +38,9 @@ export const NewArrival = () => {
           <Button
             square
             outline
-            handleClick={() => swiperRef.current.slidePrev()}
+            handleClick={() => {
+              if (swiperRef.current) swiperRef.current.slidePrev();
+            }}
             className={disabled(currentIndex, 0)}
           >
             <BiLeftArrowAlt size={24} />
@@ -42,15 +48,24 @@ export const NewArrival = () => {
           <Button
             square
             outline
-            handleClick={() => swiperRef.current.slideNext()}
-            className={disabled(currentIndex, 2)}
+            handleClick={() => {
+              if (swiperRef.current) swiperRef.current.slideNext();
+            }}
+            className={disabled(
+              currentIndex,
+              data[currentIndex].content.length - 2
+            )}
           >
             <BiRightArrowAlt size={24} />
           </Button>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row">
-        <ArrivalOptions />
+        <ArrivalOptions
+          data={data}
+          handleClick={changeIndex}
+          activeTab={activeTabIndex}
+        />
         <div className="w-full lg:w-9/12 2xl:w-10/12 p-2">
           <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -73,18 +88,11 @@ export const NewArrival = () => {
               },
             }}
           >
-            <SwiperSlide>
-              <SlideCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <SlideCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <SlideCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <SlideCard />
-            </SwiperSlide>
+            {data[activeTabIndex].content.map((el, index) => (
+              <SwiperSlide key={index}>
+                <SlideCard name={el.name} price={el.price} stars={el.stars} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

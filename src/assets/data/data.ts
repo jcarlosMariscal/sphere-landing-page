@@ -1,13 +1,81 @@
-type TData = {
+export type TContent = {
+  name: string;
+  price: string;
+  stars: number;
+};
+export type TData = {
   name: string;
   svg: string;
   all: number;
   arrival: boolean;
   color: "gray" | "lime" | "indigo" | "slate" | "yellow" | "purple" | "red";
+  content: TContent[];
 };
 export type TColorTailwind = {
   [param: string]: string;
 };
+
+const content1: TContent[] = [
+  {
+    name: "Xiphone 14 Pro Maxe",
+    price: "175.00",
+    stars: 121,
+  },
+  {
+    name: "Xiphone 13",
+    price: "100.00",
+    stars: 89,
+  },
+  {
+    name: "Samsonge Plus",
+    price: "132.00",
+    stars: 95,
+  },
+  {
+    name: "Xiphone 18",
+    price: "250.00",
+    stars: 152,
+  },
+];
+const content2: TContent[] = [
+  {
+    name: "Xiphone 13",
+    price: "100.00",
+    stars: 89,
+  },
+  {
+    name: "Xiphone 14 Pro Maxe",
+    price: "175.00",
+    stars: 121,
+  },
+  {
+    name: "Xiphone 18",
+    price: "250.00",
+    stars: 152,
+  },
+];
+const content3: TContent[] = [
+  {
+    name: "Xiphone 13",
+    price: "100.00",
+    stars: 89,
+  },
+  {
+    name: "Xiphone 14 Pro Maxe",
+    price: "175.00",
+    stars: 121,
+  },
+  {
+    name: "Samsonge Plus",
+    price: "132.00",
+    stars: 95,
+  },
+  {
+    name: "Xiphone 18",
+    price: "250.00",
+    stars: 152,
+  },
+];
 export const data: TData[] = [
   {
     name: "Computer & Laptop",
@@ -15,6 +83,7 @@ export const data: TData[] = [
     all: 15,
     arrival: true,
     color: "gray",
+    content: content1,
   },
   {
     name: "Mobile & Phone",
@@ -22,6 +91,7 @@ export const data: TData[] = [
     all: 35,
     arrival: true,
     color: "lime",
+    content: content2,
   },
   {
     name: "Camera",
@@ -29,6 +99,7 @@ export const data: TData[] = [
     all: 10,
     arrival: true,
     color: "indigo",
+    content: content3,
   },
   {
     name: "TV & Smart Box",
@@ -36,6 +107,7 @@ export const data: TData[] = [
     all: 8,
     arrival: true,
     color: "slate",
+    content: content1,
   },
   {
     name: "Home Appliance",
@@ -43,6 +115,7 @@ export const data: TData[] = [
     all: 2,
     arrival: true,
     color: "yellow",
+    content: content2,
   },
   {
     name: "Accesories",
@@ -50,6 +123,7 @@ export const data: TData[] = [
     all: 21,
     arrival: false,
     color: "purple",
+    content: content3,
   },
   {
     name: "Other Categories",
@@ -57,6 +131,7 @@ export const data: TData[] = [
     all: 21,
     arrival: false,
     color: "red",
+    content: content1,
   },
 ];
 
